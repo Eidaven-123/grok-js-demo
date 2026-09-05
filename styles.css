@@ -82,3 +82,15 @@ input {
   margin-bottom: 8px;
 }
 .notes li::after { content: " · tap to remove"; color: var(--muted); font-size: 12px; }
+
+.banner {
+  background: linear-gradient(90deg, #fbbf24, #f97316);
+  color: #111827;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
