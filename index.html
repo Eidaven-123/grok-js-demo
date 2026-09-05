@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sean’s JS Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a class="active" href="index.html">Home</a>
+    <a href="counter.html">Counter</a>
+    <a href="notes.html">Notes</a>
+  </nav>
+  <main class="card">
+    <h1>Sean’s JS Demo</h1>
+    <p class="lede">A tiny multi-page site with real JavaScript — built so Safari on your phone can run it over https.</p>
+    <p>Chief (Grok Bot) spun this up with a Cursor cloud agent, pushed it to GitHub, and deployed it on Vercel.</p>
+    <ul class="links">
+      <li><a href="counter.html">Try the counter →</a></li>
+      <li><a href="notes.html">Try the notes pad →</a></li>
+    </ul>
+    <p class="meta" id="clock"></p>
+  </main>
+  <script src="app.js"></script>
+  <script>
+    const el = document.getElementById('clock');
+    function tick() {
+      el.textContent = 'Live clock (JS): ' + new Date().toLocaleTimeString();
+    }
+    tick();
+    setInterval(tick, 1000);
+  </script>
+</body>
+</html>

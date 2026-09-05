@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes · Sean’s JS Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="counter.html">Counter</a>
+    <a class="active" href="notes.html">Notes</a>
+  </nav>
+  <main class="card">
+    <h1>Notes</h1>
+    <p class="lede">Add a note — it stays in this browser via localStorage.</p>
+    <form id="form" class="row">
+      <input id="input" type="text" placeholder="Type a note…" autocomplete="off" required />
+      <button type="submit">Add</button>
+    </form>
+    <ul id="list" class="notes"></ul>
+    <button type="button" id="clear" class="ghost full">Clear all</button>
+  </main>
+  <script>
+    const KEY = 'sean-js-demo-notes';
+    const list = document.getElementById('list');
+    const input = document.getElementById('input');
+    const load = () => JSON.parse(localStorage.getItem(KEY) || '[]');
+    const save = (items) => localStorage.setItem(KEY, JSON.stringify(items));
+    function render() {
+      const items = load();
+      list.innerHTML = '';
+      items.forEach((text, i) => {
+        const li = document.createElement('li');
+        li.textContent = text;
+        li.onclick = () => {
+          const next = load().filter((_, j) => j !== i);
+          save(next); render();
+        };
+        list.appendChild(li);
+      });
+    }
+    document.getElementById('form').onsubmit = (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) return;
+      const items = load();
+      items.unshift(text);
+      save(items);
+      input.value = '';
+      render();
+    };
+    document.getElementById('clear').onclick = () => { save([]); render(); };
+    render();
+  </script>
+</body>
+</html>

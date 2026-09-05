@@ -1,3 +1,3 @@
-# grok-js-demo
+# Sean’s JS Demo
 
-Placeholder — cloud agent will build the site.
+Simple multi-page HTML + JavaScript site for testing the Chief → GitHub → Vercel loop on iPhone.
